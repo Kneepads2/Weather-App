@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='external.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='weather.png') }}">
+    <script>
+        function changeDay(dayIndex) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('day', dayIndex);
+            window.location.search = urlParams.toString();
+        }
+
+        function changeCity(cityIndex) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('city', cityIndex);
+            window.location.search = urlParams.toString();
+        }
+    </script>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="weather_display">
+            <div>
+                <h2>{{ city }}</h2>
+                <p style="font-size: 150%;">{{ current_hour_temp }}</p>
+                <p>{{ main_weekday }}</p>
+                
+            </div>
+            <div class="wrapper" style="margin-bottom:20px;">
+                {% for entry in hourly_temp %}
+                    <div class="item {% if entry.is_now %}now{% endif %}">
+                        <h2>{{ entry.hours }}</h2>
+                        <img src="{{ entry.logos }}" alt="weather icon">
+                        <p>Temp: {{ entry.temperature }} °C</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% for i in range(7) %}
+                <div class="following_days" onclick="changeDay({{ i }});">
+                    <p style="float:left; margin-left:10px;">{{ weekday_list[i] }}</p>
+                    <p style="float:right; margin-right:10px;">| High of {{ max_temp[i] }}°C</p>
+                    <p style="float:right;">Low of {{ min_temp[i] }}°C |</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="city" style="background-image: url('{{ url_for('static', filename='brampton.jpg') }}');" onclick="changeCity(0)">Brampton</div>
+        <div class="city" style="background-image: url('{{ url_for('static', filename='mississauga.png') }}');" onclick="changeCity(1)">Mississauga</div>
+        <div class="city" style="background-image: url('{{ url_for('static', filename='oakville.jpg') }}');" onclick="changeCity(2)">Oakville</div>
+        <div class="city" style="background-image: url('{{ url_for('static', filename='toronto.jpg') }}');" onclick="changeCity(3)">Toronto</div>
+    </div>
+    <footer>
+        <p>Created by Kneepads2</p>
+    </footer>
+</body>
+</html>

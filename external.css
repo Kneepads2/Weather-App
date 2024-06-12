@@ -1,0 +1,114 @@
+body {
+    background-color: #e9f5ff;
+}
+
+.content-wrapper {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.city {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center; /*change this to flex-end if you'd like the input to start on the right side */
+    background-color: #f5f3f3;
+    border: 1px solid #ccc;
+    width: 24%;
+    height: 25vh;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 400%;
+    font-weight: bolder;
+    background-size: cover; /* Ensure the background image covers the entire div */
+    background-position: center; /* Center the background image */
+    color: whitesmoke;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    border: 1px solid #a7a7a7
+}
+
+.weather_display {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    align-items: center;
+    text-align: center;
+
+    background-color: #bdecf8;
+    border: 1px solid #ccc;
+    width: 75%;
+    height: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 5vh;
+    font-weight: bolder;
+    float: right;
+    overflow-x: scroll;
+}
+
+.weather_display h2 {
+    text-shadow: 2px 2px 4px rgb(102, 144, 236);
+    text-decoration: underline;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+}
+
+/*------------------hourly temperature boxes-----------------------------*/
+
+.wrapper {
+    max-height: 200px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden; /* Prevent vertical overflow */
+    width: 100%; /* Ensure wrapper takes full width */
+}
+
+.wrapper::-webkit-scrollbar {
+    height: 12px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+}
+
+.wrapper .item {
+    border: 1px solid black;
+    min-width: 120px;
+    height: auto;
+    line-height: normal;
+    text-align: center;
+    background-color: #70b1d6;
+    margin-right: 2px;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+.wrapper .item.now {
+    background-color: #81ecfa;
+}
+
+/*-----------------------------------------------*/
+
+.following_days {
+    width: 100%;
+    background-color: #74b1d4;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    justify-content: space-around;
+    flex-direction: row;
+    border: 1px solid #aae0ff;
+}
